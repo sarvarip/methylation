@@ -31,7 +31,13 @@
 - Open big file
     - head mouse.mr > mouse.mr.head
     - vim mouse.mr.head
-
+    
+- GIT
+    - git clone https://github.com/sarvarip/methylation.git
+    - git add notes.md
+    - git commit -am "Added notes.md"
+    - git push
+    - git pull
 
 - VIM
     - I: insert
