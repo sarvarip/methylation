@@ -147,6 +147,7 @@ Pipeline
 - Bismark
     - ~/panfs/bismark/Bismark-0.22.1/bismark_genome_preparation --verbose mousechroms
     - ~/panfs/bismark/Bismark-0.22.1/bismark --multicore 16 --genome /panfs/cmb-panasas2/sarvari/mousechroms -1 1M-2wks_1_cutadapt.fastq -2 1M-2wks_2_cutadapt.fastq
+    - to-mr -m bismark -v -o mouse_bismark.mr 1M-2wks_1_cutadapt_bismark_bt2_pe.bam
 
 
 - Sort the reads 
