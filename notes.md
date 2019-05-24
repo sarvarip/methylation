@@ -183,6 +183,10 @@ Pipeline
 - Allelically methylated regions 
     - amrfinder -o SRR5381655_1.amr -c chroms SRR5381655_1.epiread
     - amrfinder -o mouse_walt2.amr -c /panfs/cmb-panasas2/sarvari/mousechroms mouse_walt2.epiread
+    
+- Roimethstat
+    - LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -S120G --parallel=16 -o mouse_walt2_CPG.meth.sorted mouse_walt2_CPG.meth
+    - roimethstat -o mouse_walt2.methstat mouseproms.bed mouse_walt2_CPG.meth.sorted
 
 Visualization
     - Downloads:
