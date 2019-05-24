@@ -144,7 +144,7 @@ Pipeline
 
 - Bismark
     - ~/panfs/bismark/Bismark-0.22.1/bismark_genome_preparation --verbose mousechroms
-    - ~/panfs/bismark/Bismark-0.22.1/bismark --genome /panfs/cmb-panasas2/sarvari/mousechroms -1 1M-2wks_1_cutadapt.fastq -2 1M-2wks_2_cutadapt.fastq
+    - ~/panfs/bismark/Bismark-0.22.1/bismark --multicore 16 --genome /panfs/cmb-panasas2/sarvari/mousechroms -1 1M-2wks_1_cutadapt.fastq -2 1M-2wks_2_cutadapt.fastq
 
 
 - Sort the reads 
@@ -170,7 +170,7 @@ Pipeline
     - levels -o mouse_walt2.levels mouse_walt2.meth
 
 
-- Extraxting and merging symmetric CpG methylation levels
+- Extracting and merging symmetric CpG methylation levels
     - symmetric-cpgs -o mouse_CPG.meth mouse.meth
     - symmetric-cpgs -o mouse_walt2_CPG.meth mouse_walt2.meth
 
@@ -187,8 +187,8 @@ Pipeline
     - amrfinder -o mouse_walt2.amr -c /panfs/cmb-panasas2/sarvari/mousechroms mouse_walt2.epiread
     
 - Roimethstat
-    - LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -S120G --parallel=16 -o mouse_walt2_CPG.meth.sorted mouse_walt2_CPG.meth
-    - roimethstat -o mouse_walt2.methstat mouseproms.bed mouse_walt2_CPG.meth.sorted
+    - LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -S120G --parallel=16 -o mouseproms.bed.sorted mouseproms.bed
+    - roimethstat -o mouse_walt2.methstat ~/panfs/mouseproms.bed.sorted mouse_walt2_CPG.meth
 
 Visualization
     - Downloads:
