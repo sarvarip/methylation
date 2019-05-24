@@ -95,7 +95,9 @@
 
 - Login from Ubuntu
     - Ssh sarvari@hpc-cmb.usc.edu
+    
 Pipeline
+
 - Snakemake file for the whole pipeline
     - /home/rcf-47/andrewds/as/code/MethBase/MethBaseConfig
 
