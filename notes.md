@@ -61,14 +61,16 @@
     - echo $PATH (let’s you see the current environmental variables)
     - export PATH=$PATH:~/methpipe/bin (add ~/methpipe/bin to the path)
     - export PATH=$PATH:~/sarvari/sratoolkit.2.9.2-ubuntu64/bin
-    - export PATH=$PATH:~ /minconda3/bin
+    - export PATH=$PATH:~/miniconda3/bin
+    - export PATH=$PATH:/usr/usc/matlab/R2018a/bin
 
 - Check sizes and read files
     - Ls -l (check size)
     - Less (read file, exit with Q)
 
-- Check status of job
-    - squeue -au sarvari (username)
+- Check status of job and cancel it
+    - squeue -u sarvari (username)
+    - scancel jobid
 
 - Put current job in background
     - CTRL-Z and then type bg
@@ -189,6 +191,7 @@ Pipeline
 - Roimethstat
     - LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -S120G --parallel=16 -o mouseproms.bed.sorted mouseproms.bed
     - roimethstat -o mouse_walt2.methstat ~/panfs/mouseproms.bed.sorted mouse_walt2_CPG.meth
+    - use -L in roimethstat if there is a lot of memory requested
 
 Visualization
     - Downloads:
