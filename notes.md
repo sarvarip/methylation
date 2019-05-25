@@ -7,6 +7,12 @@ Project
 
 General
 
+- Jupyter notebook
+    - jupyter notebook --no-browser --port=8889
+    - ssh -N -f -L localhost:8888:localhost:8889 sarvari@hpc-cmb.usc.edu
+    - open web browser with URL: localhost:8888
+    - copy token 
+
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
     - Ln -s /auto/cmb-05/qbio/sarvari
@@ -204,13 +210,8 @@ Pipeline
     - roimethstat -o mouse_walt2.methstat ~/panfs/mouseproms.bed.sorted mouse_walt2_CPG.meth
     - use -L in roimethstat if there is a lot of memory requested
     
-- Jupyter notebook
-    -jupyter notebook --no-browser --port=8889
-    -ssh -N -f -L localhost:8888:localhost:8889 sarvari@hpc-cmb.usc.edu
-    -open web browser with URL: localhost:8888
-    -copy token 
-
 Visualization
+
     - Downloads:
         - wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64.v369/wigToBigWig
         - wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64.v369/fetchChromSizes
