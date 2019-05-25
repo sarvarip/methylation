@@ -1,3 +1,12 @@
+Project
+
+- Get promoters 1000 upstream and downstream of a gene
+- concat them
+- sort them: sort -V -k 1,3 "humanproms.bed" -o humanproms.bed.sorted
+- merge them (no overlaps): bedtools merge -i humanproms.bed > humanproms.merged.bed
+
+General
+
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
     - Ln -s /auto/cmb-05/qbio/sarvari
@@ -63,6 +72,7 @@
     - export PATH=$PATH:~/sarvari/sratoolkit.2.9.2-ubuntu64/bin
     - export PATH=$PATH:~/miniconda3/bin
     - export PATH=$PATH:/usr/usc/matlab/R2018a/bin
+    - export PATH=$PATH:/usr/usc/R/3.5.0/bin
 
 - Check sizes and read files
     - Ls -l (check size)
@@ -193,6 +203,12 @@ Pipeline
     - LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -S120G --parallel=16 -o mouseproms.bed.sorted mouseproms.bed
     - roimethstat -o mouse_walt2.methstat ~/panfs/mouseproms.bed.sorted mouse_walt2_CPG.meth
     - use -L in roimethstat if there is a lot of memory requested
+    
+- Jupyter notebook
+    -jupyter notebook --no-browser --port=8889
+    -ssh -N -f -L localhost:8888:localhost:8889 sarvari@hpc-cmb.usc.edu
+    -open web browser with URL: localhost:8888
+    -copy token 
 
 Visualization
     - Downloads:
