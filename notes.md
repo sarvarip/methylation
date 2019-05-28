@@ -36,8 +36,9 @@ General
     - Everything in subfolders: rm -rf sarvari$
     - rm -rf Python-3.4.3/
 
-- Untar
+- Untar/Unzip
     - Tar xzf sratoolkit.2.9.2-ubuntu64.tar.gz
+    - gzip -d well_covered_merged.tsv.gz
 
 - Request interactive computing job
     - Always use salloc for any job, no job should be done on the head node
