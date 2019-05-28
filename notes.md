@@ -80,6 +80,9 @@ General
     - export PATH=$PATH:/usr/usc/matlab/R2018a/bin
     - export PATH=$PATH:/usr/usc/R/3.5.0/bin
 
+- Create new environmental variable
+    - export SMITHLAB_CPP=~/panfs/smithlab/smithlab_cpp
+
 - Check sizes and read files
     - Ls -l (check size)
     - Less (read file, exit with Q)
