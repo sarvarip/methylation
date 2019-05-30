@@ -23,6 +23,7 @@ General
     
 - Bash commands for all files in a directory
     - for i in *.bz2; do ln -s ~/panfs/ivfdat/amplicon_validation/20190415/fastq/"$i" /staging/as/sarvari/ivfdat; done
+    - for i in *.bz2; do bzip2 -d "$i"; done 
 
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
