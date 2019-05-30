@@ -14,6 +14,15 @@ General
     - open web browser with URL: localhost:8888
     - copy token 
     - If cannot listen error, kill all processes on 8888: kill -9 $(lsof -t -i:8888)
+    
+- Misc
+    - Jump to front of end of line: CTRL-A and CTRL-E
+    - Put running process in background: CTRL-Z and then type bg
+    - Type fg to retrieve it
+    - Check running jobs: squeue -u sarvari
+    
+- Bash commands for all files in a directory
+    - for i in *.bz2; do ln -s ~/panfs/ivfdat/amplicon_validation/20190415/fastq/"$i" /staging/as/sarvari/ivfdat; done
 
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
