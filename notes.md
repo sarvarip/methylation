@@ -19,6 +19,9 @@ General
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
     - Ln -s /auto/cmb-05/qbio/sarvari
     
+- Text editor
+    - Use https://github.com/spf13/spf13-vim
+    
 - Copy a specific column into a new file
     - awk {'print $2'} EPIC_hg19_probe_coords > EPIC_chroms
 
