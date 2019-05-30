@@ -48,6 +48,8 @@ General
     - Copy link address from website
     - Use wget and paste after
     - For SRA download use this database: ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/SRR306/SRR306421/
+    - Human genome: http://hgdownload.soe.ucsc.edu/goldenPath/hg19/chromosomes/
+    - Use rsync -avzP rsync://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/ . to download
 
 - Remove
     - rm sratoolkit.2.9.2-ubuntu64.tar.gz
