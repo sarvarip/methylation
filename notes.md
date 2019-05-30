@@ -13,7 +13,7 @@ General
     - ssh -N -f -L localhost:8888:localhost:8889 sarvari@hpc-cmb.usc.edu
     - open web browser with URL: localhost:8888
     - copy token 
-    - If cannot listen error, kill all processes on 8888: kill -9 $(lsof -t -i:8080)
+    - If cannot listen error, kill all processes on 8888: kill -9 $(lsof -t -i:8888)
 
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
