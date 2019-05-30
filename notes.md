@@ -189,7 +189,6 @@ Pipeline
 
 
 - Sort the reads 
-    - LC_ALL=C sort -k 1,1 -k 2,2n -k 3,3n -k 6,6 -o mouse.mr.sorted mouse.mr
     - LC_ALL=C sort -k 1,1 -k 2,2n -k 3,3n -k 6,6 -S120G --parallel=16 -o mouse_parallel.mr.sorted mouse.mr
     - LC_ALL=C sort -k 1,1 -k 2,2n -k 3,3n -k 6,6 -S120G --parallel=16 -o mouse_walt2.mr.sorted mouse_walt2.mr
 
