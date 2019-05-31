@@ -10,6 +10,7 @@ EPIC analysis
 
 Amplicon validation
 
+- ls *.fastq > filenames.txt- 
 - ~/panfs/bismark/Bismark-0.22.1/bismark_genome_preparation --parallel 32  --verbose chroms
 - xargs --arg-file=command_list.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list2.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
