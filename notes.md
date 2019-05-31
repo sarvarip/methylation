@@ -11,7 +11,7 @@ EPIC analysis
 Amplicon validation
 
 - ~/panfs/bismark/Bismark-0.22.1/bismark_genome_preparation --parallel 32  --verbose chroms
-- IFS=$'\n'; for j in $(cat ./command_list.txt); do echo "$j"; done
+- xargs --arg-file=command_list.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
 
 General
 
@@ -32,6 +32,7 @@ General
     - for i in *.bz2; do ln -s ~/panfs/ivfdat/amplicon_validation/20190415/fastq/"$i" /staging/as/sarvari/ivfdat; done
     - for i in *.bz2; do bzip2 -d "$i"; done 
     - for i in *.fq; do mv "$i" "$(basename "$i" .fq).fastq"; done
+    - Going through lines of a file:  IFS=$'\n'; for j in $(cat ./command_list.txt); do echo "$j"; done
 
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
