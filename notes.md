@@ -14,6 +14,7 @@ Amplicon validation
 - xargs --arg-file=command_list.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list2.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list3.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
+- xargs --arg-file=command_list4.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
 
 General
 
