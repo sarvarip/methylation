@@ -1,10 +1,17 @@
 Project
 
+EPIC analysis
+
 - Get promoters 1000 upstream and downstream of a gene 
 - Use the Table browser for that: https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=728013001_Upd5TraWK5jaeJEmxkb0K01CKWaB
 - concat them
 - sort them: sort -V -k 1,3 "humanproms.bed" -o humanproms.bed.sorted
 - merge them (no overlaps): bedtools merge -i humanproms.bed > humanproms.merged.bed
+
+Amplicon validation
+
+- ~/panfs/bismark/Bismark-0.22.1/bismark_genome_preparation --parallel 32  --verbose chroms
+- IFS=$'\n'; for j in $(cat ./command_list.txt); do echo "$j"; done
 
 General
 
