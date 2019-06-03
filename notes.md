@@ -32,6 +32,9 @@ General
     - copy token 
     - If cannot listen error, kill all processes on 8888: kill -9 $(lsof -t -i:8888)
     
+- Hardware info
+    - cat /proc/meminfo
+    
 - Misc
     - Jump to front of end of line: CTRL-A and CTRL-E
     - Put running process in background: CTRL-Z and then type bg
