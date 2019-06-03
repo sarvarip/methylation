@@ -10,7 +10,10 @@ EPIC analysis
 
 Amplicon validation
 
-- ls *.fastq > filenames.txt- 
+- ls *.fastq > filenames.txt
+- ls *[0-9].fastq > batch1names.txt
+- for i in *.fq; do mv "$i" "$(basename "$i" .fq).fastq"; done
+- mv batch1names.txt /staging/as/sarvari/ivfdat
 - ~/panfs/bismark/Bismark-0.22.1/bismark_genome_preparation --parallel 32  --verbose chroms
 - xargs --arg-file=command_list0.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
