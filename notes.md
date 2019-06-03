@@ -18,6 +18,7 @@ Amplicon validation
 - xargs --arg-file=command_list0.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list_p1.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list_p2.txt --max-procs=13 --replace --verbose /bin/sh -c "{}"
+- xargs --arg-file=command_list_onehalf.txt --max-procs=15 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list2.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list3.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list4.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
@@ -99,7 +100,6 @@ General
     - :w save
     - :q! exit
     - :wq to exit and save
-
 
 - Emacs
     - Ctrl-x and CTRL-s to save
