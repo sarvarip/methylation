@@ -44,6 +44,8 @@ General
     
 - Misc
     - Jump to front of end of line: CTRL-A and CTRL-E
+    - Reverse search of commands: CTRL-C and then CTRL-R
+    - Paste: Middle mouse button
     - Put running process in background: CTRL-Z and then type bg
     - Type fg to retrieve it
     - Check running jobs: squeue -u sarvari
