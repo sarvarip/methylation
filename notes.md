@@ -22,7 +22,7 @@ Amplicon validation
 - xargs --arg-file=command_list2.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list3.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list4.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
-- Much better way: ls *_cutadapt.mr.sorted | xargs -P 16 -n 1 -I % duplicate-remover
+- Much better way: ls *_cutadapt.mr.sorted | xargs -P 16 -n 1 -I % /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/duplicate-remover   (uses the 16 cores for one job though, automatically named output)
 
 General
 
