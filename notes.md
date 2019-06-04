@@ -36,6 +36,12 @@ General
 - Hardware info
     - cat /proc/meminfo
     
+- C++ compiler location
+    - export PATH=$PATH:/usr/usc/gnu/gcc/5.3.0/bin
+    - Still does not work because the path to the earlier version 
+    - export PATH="/usr/usc/gnu/gcc/5.3.0/bin:/home/rcf-40/sarvari/panfs/miniconda3/bin:/home/rcf-40/sarvari/panfs/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/us/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
+    - set it to be path in .bashrc (just copy it to the end of file)
+    
 - Misc
     - Jump to front of end of line: CTRL-A and CTRL-E
     - Put running process in background: CTRL-Z and then type bg
@@ -161,6 +167,9 @@ General
     - Ssh sarvari@hpc-cmb.usc.edu
     
 Pipeline
+
+- Methpipe installation
+    - git clone --recursive https://github.com/smithlabcode/methpipe.git
 
 - Snakemake file for the whole pipeline
     - /home/rcf-47/andrewds/as/code/MethBase/MethBaseConfig
