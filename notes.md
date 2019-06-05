@@ -25,6 +25,7 @@ Amplicon validation
 - Much better way: ls *_cutadapt.mr.sorted | xargs -P 16 -n 1 -I % /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/duplicate-remover   (uses the 16 cores for one job though, automatically named output)
 - To use multiple salloc cluster jobs:
 - for i in *.mr.sorted; do echo $(basename $i ".mr.sorted").meth; done | xargs snakemake -p -s methcounts.smk -j 200 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
+- for i in *.fastq; do echo $(basename $i ".fastq")_trimmed.fq; done | xargs snakemake -p -s cutadapt.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 
 
 General
