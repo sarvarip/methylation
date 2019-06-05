@@ -26,6 +26,7 @@ Amplicon validation
 - To use multiple salloc cluster jobs:
 - for i in *.mr.sorted; do echo $(basename $i ".mr.sorted").meth; done | xargs snakemake -p -s methcounts.smk -j 200 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - for i in *.fastq; do echo $(basename $i ".fastq")_trimmed.fq; done | xargs snakemake -p -s cutadapt.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
+- for i in *.meth; do echo $(basename $i ".meth").meth.highcoverage; done | xargs snakemake --use-singularity -p -s methfilter.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 
 
 General
