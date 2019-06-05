@@ -36,7 +36,7 @@ Amplicon validation
 - for i in *.highcoverage; do awk '$6 > 65536 {print FILENAME}' "$i" >> biggerthan65.txt; done
 - for i in *.meth; do echo $(basename $i ".meth").meth.roi; done | xargs snakemake -p -s methroi.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - for i in *.mr.sorted; do echo $(basename $i ".mr.sorted").bsrate; done | xargs snakemake -p -s bsrate.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
-- 
+- for i in *.meth; do echo $(basename $i ".meth").levels; done | xargs snakemake -p -s levels.smk -j 10 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 
 
 
