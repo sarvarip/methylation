@@ -23,6 +23,7 @@ Amplicon validation
 - xargs --arg-file=command_list3.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - xargs --arg-file=command_list4.txt --max-procs=32 --replace --verbose /bin/sh -c "{}"
 - Much better way: ls *_cutadapt.mr.sorted | xargs -P 16 -n 1 -I % /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/duplicate-remover   (uses the 16 cores for one job though, automatically named output)
+- To use multiple salloc cluster jobs:
 - for i in *.mr.sorted; do echo $(basename $i ".mr.sorted").meth; done | xargs snakemake -p -s methcounts.smk -j 200 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 
 
@@ -115,6 +116,8 @@ General
     - :w save
     - :q! exit
     - :wq to exit and save
+    - :set paste from CTRL SHIFT V pasting (so that it does not screw up with the autoindent)
+    - :set nopaste to change it back
 
 - Emacs
     - Ctrl-x and CTRL-s to save
