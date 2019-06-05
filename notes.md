@@ -28,6 +28,7 @@ Amplicon validation
 - for i in *.fastq; do echo $(basename $i ".fastq")_trimmed.fq; done | xargs snakemake -p -s cutadapt.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - for i in *.meth; do echo $(basename $i ".meth").meth.highcoverage; done | xargs snakemake --use-singularity -p -s methfilter.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - awk -F "\t" '$6 > 1000' 61578_S65_cutadapt.meth > 61578_S65_cutadapt.meth.highcoverage
+- awk '$1 == "chr10" && $2 == "45641678" {print $5,$6}' 59160_S209_cutadapt.meth.highcoverage
 
 
 General
