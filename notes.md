@@ -33,6 +33,7 @@ Amplicon validation
 - awk '$1 == 0 {print $2}' linecounts.txt 
 - for i in *.highcoverage; do awk '$1 == "chr10" && $2 == "45641678" {print $5,$6, FILENAME}'  "$i" >> summary_s1.txt; done 
 - /home/rcf-47/andrewds/as/code/for_peter/methpipe/src/analysis/selectsites -v 13_sites_exp.bed 56698.meth
+- for i in *.highcoverage; do awk '$6 > 65536 {print FILENAME}' "$i" >> biggerthan65.txt; done
 
 
 
