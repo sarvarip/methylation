@@ -40,8 +40,9 @@ Amplicon validation
 - awk '$1 > 57235792 {print$1,$2}' methlinecounts.txt > aberrantmethfiles.txt
 - cat filenametruncmeth.txt | while read line; do echo "$line"; done | xargs snakemake -p -s methcounts.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - cat filenametruncmeth.txt | while read line; do rm -rf "$line"; done
--  /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/merge-methcounts -v -h -t -o amplicon_validation_mergedmeths.txt *.roi
+-  /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/merge-methcounts -v -h -o amplicon_validation_mergedmeths_nodasht.txt *.roi
 - for i in *.sam; do t=$(basename $i “.sam”); n_mapped=$(grep -v ^@ ${t}.sam | cut -f 1 | uniq | wc -l); n_seqd=$(cat ${t}.fastq | wc -l); echo $t $n_mapped $n_seqd; done | awk ‘{print $1,$2,$3/4}’ > seqd_and_mapped.txt
+- /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/merge-methcounts -t *.roi > amplicon_validation_mergedmeths.txt
 
 
 
