@@ -38,7 +38,7 @@ Amplicon validation
 - for i in *.mr.sorted; do echo $(basename $i ".mr.sorted").bsrate; done | xargs snakemake -p -s bsrate.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - for i in *.meth; do echo $(basename $i ".meth").levels; done | xargs snakemake -p -s levels.smk -j 10 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
 - awk '$1 > 57235792 {print$1,$2}' methlinecounts.txt > aberrantmethfiles.txt
-- cat filenametruncmeth.txt | while read line; do echo "$line"; done | xargs snakemake -p -s methcounts.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
+- cat filenametruncmeth.txt | while read line; do echo "$line"; done | xargs snakemake -p -s methcounts.smk -j 20 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60 (don't do this snakemake automatically knows which ones to rerun)
 - cat filenametruncmeth.txt | while read line; do rm -rf "$line"; done
 -  /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/merge-methcounts -v -h -o amplicon_validation_mergedmeths_nodasht.txt *.roi
 - for i in *.sam; do t=$(basename $i “.sam”); n_mapped=$(grep -v ^@ ${t}.sam | cut -f 1 | uniq | wc -l); n_seqd=$(cat ${t}.fastq | wc -l); echo $t $n_mapped $n_seqd; done | awk ‘{print $1,$2,$3/4}’ > seqd_and_mapped.txt
@@ -48,6 +48,8 @@ Amplicon validation
 - for i in `cat //staging/as/andrewds/rma/batch_3.txt | cut -f 1`; do echo $i `grep -v ^@ ${i}*sam | wc -l` `cat ${i}*mr | wc -l`; done | awk '{print $1,$2,$3,$2==$3}' >> ~sarvari/panfs/ivfdat/good_tomr_conversions.txt
 - for i in `grep 0$  ~sarvari/panfs/ivfdat/good_tomr_conversions.txt | cut -f 1`; do find ~sarvari/staging/ -maxdepth 1 -name ${i}\*_bismark_bt2.bam; done > redo_tomr.txt
 - grep 0$ good_tomr_conversions.txt | awk '{print $1}'
+- for i in `grep 0$  ~sarvari/panfs/ivfdat/good_tomr_conversions.txt | cut -f 1`; do find ~sarvari/staging/ -maxdepth 1 -name ${i}\*.mr; done > redo_sort.txt
+
 
 
 
