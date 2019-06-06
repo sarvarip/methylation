@@ -88,7 +88,7 @@ General
 
 - Symbolic link
     - ln -s /home/cmb-panasas2/sarvari ~/panfs
-    - Ln -s /auto/cmb-05/qbio/sarvari
+    - cat batch3names.txt | while read line; do ln -s ~/panfs/ivfdat/amplicon_validation/20190424/fastq/"$line" ~/staging/fastq; done;
     - IFS=$'\n'; set -f; for i in $(cat < "mrsortedhead.txt"); do ln -s ~/staging/"$i" ~/staging/snakemake_test; done;
     
 - Text editor
