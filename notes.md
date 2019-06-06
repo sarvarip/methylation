@@ -44,6 +44,11 @@ Amplicon validation
 - for i in *.sam; do t=$(basename $i “.sam”); n_mapped=$(grep -v ^@ ${t}.sam | cut -f 1 | uniq | wc -l); n_seqd=$(cat ${t}.fastq | wc -l); echo $t $n_mapped $n_seqd; done | awk ‘{print $1,$2,$3/4}’ > seqd_and_mapped.txt
 - /home/rcf-47/andrewds/as/code/for_peter/methpipe/bin/merge-methcounts -t *.roi > amplicon_validation_mergedmeths.txt
 - cat batch2names.txt | while read line; do echo $(basename $line ".fastq")_cutadapt.fastq; done >> batch2namescutadapt.txt 
+- for i in *.fastq; do awk 'NR%4==2 {print length}' "$i" >> merged_seqlen.txt; done
+- for i in `cat //staging/as/andrewds/rma/batch_3.txt | cut -f 1`; do echo $i `grep -v ^@ ${i}*sam | wc -l` `cat ${i}*mr | wc -l`; done | awk '{print $1,$2,$3,$2==$3}' >> ~sarvari/panfs/ivfdat/good_tomr_conversions.txt
+- for i in `grep 0$  ~sarvari/panfs/ivfdat/good_tomr_conversions.txt | cut -f 1`; do find ~sarvari/staging/ -maxdepth 1 -name ${i}\*_bismark_bt2.bam; done > redo_tomr.txt
+- grep 0$ good_tomr_conversions.txt | awk '{print $1}'
+
 
 
 
