@@ -24,8 +24,7 @@ Python codes / preparation / correlation validation
 - python locsort.py -i sites -i2 correlations -o sorted_sites -o2 sorted_correlations
 - paste sorted_sites sorted_correlations > sorted_correlation_full_doublecheck.txt
 
-- when getting the input from merge-methcounts, add in an extra tab at the beginning for Python pandas to read the file well, also need to edit the weird row and column names
-- python correlation.py -m1 batch_20190415.txt -m2 13_reduced_methylation.txt -col 13_cols -o 13_correlation_full.txt
+- when getting the input from merge-methcounts, add in an extra tab at the beginning for Python pandas to read the file well, also need to edit the weird row and column names (also follow other steps in Untitled.ipynb)
 
 Amplicon validation
 
