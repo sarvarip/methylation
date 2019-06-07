@@ -68,7 +68,6 @@ Amplicon validation
 - for i in *.bsrate;do awk 'NR==1 {print FILENAME,$5}' "$i" >> bsrate_summary.txt; done
 - sed -e "s/_S[0-9]\+_cutadapt.bsrate//g" ~sarvari/staging/bsrate/bsrate_summary.txt
 
-
 General
 
 - Jupyter notebook
