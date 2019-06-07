@@ -14,6 +14,8 @@ Python codes / preparation
 - python extract.py -g 13_cols -p EPIC_hg19_probe_coords -m methylation.txt -o 13_reduced_methylation.txt
 - python correlation.py -m1 well_b1.txt -m2 reduced_methylation.txt -col found_cols.txt -o correlation_b1.txt
 
+-when getting the input from merge-methcounts, add in an extra tab at the beginning for Python pandas to read the file well
+
 Amplicon validation
 
 - ls *.fastq > filenames.txt
