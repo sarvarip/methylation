@@ -8,6 +8,12 @@ EPIC analysis
 - sort them: sort -V -k 1,3 "humanproms.bed" -o humanproms.bed.sorted
 - merge them (no overlaps): bedtools merge -i humanproms.bed > humanproms.merged.bed
 
+Python codes / preparation
+
+- cat 13_sites.bed | while read line; do echo "$line"; done | awk '{print $1, $2}' >> 13_cols
+- python extract.py -g 13_cols -p EPIC_hg19_probe_coords -m methylation.txt -o 13_reduced_methylation.txt
+- python correlation.py -m1 well_b1.txt -m2 reduced_methylation.txt -col found_cols.txt -o correlation_b1.txt
+
 Amplicon validation
 
 - ls *.fastq > filenames.txt
