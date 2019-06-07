@@ -66,7 +66,9 @@ Amplicon validation
 - grep 0$ good_tomr_conversions.txt | awk '{print $1}'
 - for i in `grep 0$  ~sarvari/panfs/ivfdat/good_tomr_conversions.txt | cut -f 1`; do find ~sarvari/staging/ -maxdepth 1 -name ${i}\*.mr; done > redo_sort.txt
 - for i in *.bsrate;do awk 'NR==1 {print FILENAME,$5}' "$i" >> bsrate_summary.txt; done
-- sed -e "s/_S[0-9]\+_cutadapt.bsrate//g" ~sarvari/staging/bsrate/bsrate_summary.txt
+- sed -e "s/_S[0-9]\+_cutadapt.bsrate//g" ~sarvari/staging/bsrate/bssum.txt
+- sed -e "s/.bsrate//g" ~sarvari/staging/bsrate/bssum.txt >> summary.txt
+- sort -k1 -n summary.txt >> sorted_summary.txt
 
 General
 
