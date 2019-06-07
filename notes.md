@@ -25,6 +25,7 @@ Python codes / preparation / correlation validation
 - paste sorted_sites sorted_correlations > sorted_correlation_full_doublecheck.txt
 
 - when getting the input from merge-methcounts, add in an extra tab at the beginning for Python pandas to read the file well, also need to edit the weird row and column names (also follow other steps in Untitled.ipynb)
+- python correlation.py -m1 aplicon_valid_df.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o 13_correlation_full.txt -d1 amplicon_13_SAS.csv -d2 epic_13_SAS.csv
 
 Amplicon validation
 
