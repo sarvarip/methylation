@@ -20,6 +20,9 @@ Python codes / preparation / correlation validation
 - python sample_correlation.py -m1 well_b3_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_b3.txt
 - python sample_correlation.py -m1 well_b2_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_b2.txt
 - python sample_correlation.py -m1 well_b1_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_b1.txt
+- cut -f2 correlation_full_doublecheck.txt 
+- python locsort.py -i sites -i2 correlations -o sorted_sites -o2 sorted_correlations
+- paste sorted_sites sorted_correlations > sorted_correlation_full_doublecheck.txt
 
 - when getting the input from merge-methcounts, add in an extra tab at the beginning for Python pandas to read the file well, also need to edit the weird row and column names
 - python correlation.py -m1 batch_20190415.txt -m2 13_reduced_methylation.txt -col 13_cols -o 13_correlation_full.txt
