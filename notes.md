@@ -8,11 +8,18 @@ EPIC analysis
 - sort them: sort -V -k 1,3 "humanproms.bed" -o humanproms.bed.sorted
 - merge them (no overlaps): bedtools merge -i humanproms.bed > humanproms.merged.bed
 
-Python codes / preparation
+Python codes / preparation / correlation validation
 
 - cat 13_sites.bed | while read line; do echo "$line"; done | awk '{print $1"\011"$2}' >> 13_cols
 - python extract.py -g 13_cols -p EPIC_hg19_probe_coords -m methylation.txt -o 13_reduced_methylation.txt (produces found_columns.txt!!!)
-- python correlation.py -m1 well_b1.txt -m2 reduced_methylation.txt -col found_cols.txt -o correlation_b1.txt
+- python correlation.py -m1 aplicon_valid_df.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o 13_correlation_full.txt
+- python correlation.py -m1 well_b1_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o 13_correlation_b1.txt
+- python correlation.py -m1 well_b2_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o 13_correlation_b2.txt
+- python correlation.py -m1 well_b3_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o 13_correlation_b3.txt
+- python sample_correlation.py -m1 aplicon_valid_df.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_full.txt
+- python sample_correlation.py -m1 well_b3_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_b3.txt
+- python sample_correlation.py -m1 well_b2_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_b2.txt
+- python sample_correlation.py -m1 well_b1_validation.txt -m2 13_reduced_methylation.txt -col found_cols.txt -o sample_correlation_b1.txt
 
 - when getting the input from merge-methcounts, add in an extra tab at the beginning for Python pandas to read the file well, also need to edit the weird row and column names
 - python correlation.py -m1 batch_20190415.txt -m2 13_reduced_methylation.txt -col 13_cols -o 13_correlation_full.txt
@@ -60,9 +67,6 @@ Amplicon validation
 - for i in `grep 0$  ~sarvari/panfs/ivfdat/good_tomr_conversions.txt | cut -f 1`; do find ~sarvari/staging/ -maxdepth 1 -name ${i}\*.mr; done > redo_sort.txt
 - for i in *.bsrate;do awk 'NR==1 {print FILENAME,$5}' "$i" >> bsrate_summary.txt; done
 - sed -e "s/_S[0-9]\+_cutadapt.bsrate//g" ~sarvari/staging/bsrate/bsrate_summary.txt
-
-
-
 
 
 General
