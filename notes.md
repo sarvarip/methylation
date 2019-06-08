@@ -76,8 +76,13 @@ Amplicon validation
 - awk 'NR%4==2 { thislen=length($0); totlen+=thislen}
 END { print FILENAME,  4*totlen/NR } ' 60098_S186_cutadapt.fastq
 
--for i in *_S*_cutadapt.fastq; do awk 'NR%4==2 { thislen=length($0); totlen+=thislen}
+- for i in *_S*_cutadapt.fastq; do awk 'NR%4==2 { thislen=length($0); totlen+=thislen}
 END { print FILENAME,  4*totlen/NR } ' "$i"; done >> fraglen
+
+- for i in *[0-9].fastq; do awk 'NR%4==2 { thislen=length($0); totlen+=thislen}
+END { print FILENAME,  4*totlen/NR } ' "$i"; done >> fraglen
+
+- cat fraglen1 fraglen23 > fraglen
 
 General
 
