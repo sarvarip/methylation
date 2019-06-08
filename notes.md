@@ -73,6 +73,12 @@ Amplicon validation
 - sed -e "s/.bsrate//g" ~sarvari/staging/bsrate/bssum.txt >> summary.txt
 - sort -k1 -n summary.txt >> sorted_summary.txt
 
+- awk 'NR%4==2 { thislen=length($0); totlen+=thislen}
+END { print FILENAME,  4*totlen/NR } ' 60098_S186_cutadapt.fastq
+
+-for i in *_S*_cutadapt.fastq; do awk 'NR%4==2 { thislen=length($0); totlen+=thislen}
+END { print FILENAME,  4*totlen/NR } ' "$i"; done >> fraglen
+
 General
 
 - Jupyter notebook
