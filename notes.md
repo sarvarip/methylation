@@ -14,6 +14,8 @@ Machine Learning prep
 - awk '{ print $2 }' methylation.txt | awk '{if (NR==1) name = $0; else total+=$0; sq+=$0*$0} END {print name, sq/NR-(total/NR)**2}'
 - awk '{ print $2, $3 }' methylation.txt | awk '{for (i=1;i<=NF;i++) {if (NR==1) name[i] = $i; else total[i]+=$i; sq[i]+=$i*$i}} END {for(i=1;i<=NF;i++) {print name[i], sq[i]/NR-(total[i]/NR)**2}}'
 - awk '{ for(i=2;i<=10000;i++) {printf "%s ", $i} printf "\n"}' methylation.txt | awk '{for (i=1;i<=NF;i++) {if (NR==1) name[i] = $i; else total[i]+=$i; sq[i]+=$i*$i}} END {for(i=1;i<=NF;i++) {print name[i], sq[i]/NR-(total[i]/NR)**2}}'
+- awk '{for (i=1;i<=NF;i++) {if (NR==1) name[i] = $i; else total[i]+=$i; sq[i]+=$i*$i}} END {for(i=1;i<=NF;i++) {print name[i], sq[i]/NR-(total[i]/NR)**2}}' methylation.txt > variances
+- /usr/usc/R/3.5.0/bin/R
 
 
 - for i in {2..866092}; do echo $i.variance; done | xargs snakemake -p -s variance.smk -j 30 --cluster "{params.grid_opts}" --rerun-incomplete --latency-wait 60
