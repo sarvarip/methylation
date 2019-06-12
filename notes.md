@@ -29,6 +29,33 @@ Machine Learning prep
 - rownames(data) <- data$Row.names
 - data$Row.names <- NULL
 
+Y_ <- data$Male.Age
+X_ <- data #[,1:500]
+X_$Male.Age <- NULL
+
+X <- as.matrix(X_[1:800,])
+Y <- as.matrix(Y_[1:800])
+
+foldid = sample(1:10,size=length(Y),replace=TRUE)
+
+cv.5 = cv.glmnet(X,Y,type.measure="mse",foldid=foldid,alpha=0.5)
+cv.1 = cv.glmnet(X,Y,type.measure="mse",foldid=foldid,alpha=1)
+cv0 = cv.glmnet(X,Y,type.measure="mse",foldid=foldid,alpha=0)
+
+plot(cv.1);plot(cv.5);plot(cv0)
+plot(log(cv.0$lambda), cv.0$cvm, pch=19, col="red", xlab="log(lambda)", ylab=cv.0$name)
+points(log(cv.1$lambda), cv.1$cvm, pch=19, col="grey")
+points(log(cv.5$lambda), cv.5$cvm, pch=19, col="blue")
+legend("topleft", legend=c("alpha=0.1","alpha=0.5","alpha=0"), pch=19, col=c("red","grey","blue"))
+
+#coef(cv.1, s=cv.5$lambda.min)
+#coef(cv0, s=cv0$lambda.min)
+
+y_real <- Y_[800:length(Y_)]
+x_pred <- as.matrix(X_[800:length(Y_),])
+y_pred <- predict(cv0, newx = x_pred, s="lambda.min")
+result.lm = lm(y_real ~ y_pred)
+summary(result.lm)$r.squared
 
 Python codes / preparation / correlation validation
 
