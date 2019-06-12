@@ -17,6 +17,17 @@ Machine Learning prep
 - variances <- apply(df,2,var)
 - variances <- variances[,order(-variances)]
 - df_red <- df[,names(variances[1:1000])]
+- rownames(df_red) <- gsub("X", "", rownames(df_red))
+- cut -f1 RMAdataAge.txt | cut -d "-" -f1 | cut -d "*" -f1 | cut -d "," -f1 > ids
+- sed -i 's/"//g' ids
+- cut -f2 RMAdataAge.txt > ages
+- paste ids ages > agedat
+- ages <- read.csv(file="agedat", header=TRUE, sep="\t")
+- rownames(df_red) <- gsub("X", "", rownames(df_red))
+- ages$Laboratory.ID <- NULL
+- data <- merge(df_red, ages, by=0)
+- rownames(data) <- data$Row.names
+- data$Row.names <- NULL
 
 
 Python codes / preparation / correlation validation
