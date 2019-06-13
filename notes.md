@@ -28,6 +28,7 @@ Machine Learning prep
 - data <- merge(df_red, ages, by=0)
 - rownames(data) <- data$Row.names
 - data$Row.names <- NULL
+- sed -i 's~n/a~~g' numsucc
 
 Python codes / preparation / correlation validation
 
