@@ -29,6 +29,8 @@ Machine Learning prep
 - rownames(data) <- data$Row.names
 - data$Row.names <- NULL
 - sed -i 's~n/a~~g' numsucc
+- paste ids numeggs numsucc > temp
+- awk -F"     " '{if (!($2=="" || $2==0 || NR==1)) print $3/$2; else print""}' temp > ratios
 
 Python codes / preparation / correlation validation
 
