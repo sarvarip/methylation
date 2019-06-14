@@ -32,6 +32,8 @@ Machine Learning prep
 - paste ids numeggs numsucc > temp
 - awk -F"     " '{if (!($2=="" || $2==0 || NR==1)) print $3/$2; else print""}' temp > ratios
 - sed -i 's~.*Endometrial.*~0~g' issue
+- paste ratiodat issue > ratiodat_filtered
+- awk -F"\t" '!($4 == 0) { print $1"\t"$2"\t"$3 }' ratiodat_filtered > filtered_ratiodat
 
 Python codes / preparation / correlation validation
 
