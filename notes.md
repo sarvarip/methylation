@@ -39,6 +39,7 @@ Machine Learning prep
 - sed -n '629496,629746p' sorted_EPIC_probe_coords > SNORD_probe_coords
 - awk {'print $1'} SNORD_probe_coords > SNORD115coords
 - sed -i 's~.*#DIV/0.*~~g' malebmi.txt
+- sed -i 's~0.*~~g' malebmidat
 
 Python codes / preparation / correlation validation
 
