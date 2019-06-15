@@ -34,6 +34,10 @@ Machine Learning prep
 - sed -i 's~.*Endometrial.*~0~g' issue
 - paste ratiodat issue > ratiodat_filtered
 - awk -F"\t" '!($4 == 0) { print $1"\t"$2"\t"$3 }' ratiodat_filtered > filtered_ratiodat
+- awk -F"\t" ' ($1=="cg02274263") {print NR}' sorted_EPIC_probe_coords
+- awk -F"\t" ' ($1=="cg21078414") {print NR}' sorted_EPIC_probe_coords
+- sed -n '629496,629746p' sorted_EPIC_probe_coords > SNORD_probe_coords
+- awk {'print $1'} SNORD_probe_coords > SNORD115coords
 
 Python codes / preparation / correlation validation
 
