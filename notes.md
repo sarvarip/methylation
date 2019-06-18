@@ -268,6 +268,7 @@ Pipeline
 
 - Methpipe installation
     - git clone --recursive https://github.com/smithlabcode/methpipe.git
+    - git clone --recursive https://github.com/smithlabcode/smithlab_cpp.git
     - use g++ version 5+ (see abpve hopw to get it)
     - create new environmental variable, SMITHLAB_CPP (see above)
 
