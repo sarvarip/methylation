@@ -119,6 +119,14 @@ END { print FILENAME,  4*totlen/NR } ' "$i"; done >> fraglen
 
 General
 
+- Conda
+    - conda installation is taking long if only one environment is used
+    - conda create -n methpipe 
+    - conda activate methpipe
+    - conda install -c psi4 gcc-5 
+    - conda install -c conda-forge gsl 
+    - conda deactivate
+
 - Jupyter notebook
     - jupyter notebook --no-browser --port=8889
     - ssh -N -f -L localhost:8888:localhost:8889 sarvari@hpc-cmb.usc.edu
