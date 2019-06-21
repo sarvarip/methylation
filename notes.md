@@ -40,6 +40,7 @@ Machine Learning prep
 - awk {'print $1'} SNORD_probe_coords > SNORD115coords
 - sed -i 's~.*#DIV/0.*~~g' malebmi.txt
 - sed -i 's~0.*~~g' malebmidat
+- awk '$2 > 40 && $5 == 0{print $0}' filtered_successdatratio | wc -l
 
 Python codes / preparation / correlation validation
 
