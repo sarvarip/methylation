@@ -220,6 +220,7 @@ General
     - :wq to exit and save
     - :set paste from CTRL SHIFT V pasting (so that it does not screw up with the autoindent)
     - :set nopaste to change it back
+    - :vsp filename to vertically split window and can easily copy and paste using 'y' and 'p'
 
 - Emacs
     - Ctrl-x and CTRL-s to save
