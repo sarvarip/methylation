@@ -120,6 +120,9 @@ END { print FILENAME,  4*totlen/NR } ' "$i"; done >> fraglen
 
 General
 
+- R install.packages
+    - move R directory at login node (where packages are automatically installed) to panasas and create a symbolic link from panasas to the login directory
+
 - Conda
     - conda installation is taking long if only one environment is used
     - conda create -n methpipe 
