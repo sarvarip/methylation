@@ -43,6 +43,7 @@ Machine Learning prep
 - awk '$2 > 40 && $5 == 0{print $0}' filtered_successdatratio | wc -l
 - sed -i 's~,~\t~g' OldDataFemale_Age_Euploid_Rate.csv
 - ~/panfs/ivfdat/IVF_regression/reproduce/final/euploid_analysis$ /usr/usc/R/3.5.0/bin/Rscript euploid_analysis.R features.txt metadata.txt methylation.txt Euploid.Rate EuploidAnalysis
+- awk '$3 = $3+1000' human_1000_upstream_proms.bed | head -10
 
 Python codes / preparation / correlation validation
 
