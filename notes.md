@@ -290,6 +290,10 @@ Pipeline
     - git clone --recursive https://github.com/smithlabcode/smithlab_cpp.git
     - use g++ version 5+ (see abpve hopw to get it)
     - create new environmental variable, SMITHLAB_CPP (see above)
+    - make -f original_makefile.mk DOES NOT WORK
+    - autoreconf -i 
+    - ./configure
+    - export for SMITHLAB_CPP does not work anymore!!
 
 - Snakemake file for the whole pipeline
     - /home/rcf-47/andrewds/as/code/MethBase/MethBaseConfig
