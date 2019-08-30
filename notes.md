@@ -8,6 +8,10 @@ EPIC analysis
 - sort them: sort -V -k 1,3 "humanproms.bed" -o humanproms.bed.sorted
 - merge them (no overlaps): bedtools merge -i humanproms.bed > humanproms.merged.bed
 
+- awk '$3 = $3+1000' human_1000_upstream_proms.bed | head -10
+- awk '($6=="+") {print $1"\t"$2"\t"$3}' human_+-1000_proms.bed | uniq > human1000positive
+- sort -V -k 1,3 "human1000positive" -o human1000positive.sorted
+
 Machine Learning prep
 
 - awk '{ for(i=2;i<=10000;i++) {printf "%s ", $i} printf "\n"}' methylation.txt | awk '{for (i=1;i<=NF;i++) {if (NR==1) name[i] = $i; else total[i]+=$i; sq[i]+=$i*$i}} END {for(i=1;i<=NF;i++) {print name[i], sq[i]/NR-(total[i]/NR)**2}}'
@@ -43,8 +47,6 @@ Machine Learning prep
 - awk '$2 > 40 && $5 == 0{print $0}' filtered_successdatratio | wc -l
 - sed -i 's~,~\t~g' OldDataFemale_Age_Euploid_Rate.csv
 - ~/panfs/ivfdat/IVF_regression/reproduce/final/euploid_analysis$ /usr/usc/R/3.5.0/bin/Rscript euploid_analysis.R features.txt metadata.txt methylation.txt Euploid.Rate EuploidAnalysis
-- awk '$3 = $3+1000' human_1000_upstream_proms.bed | head -10
-- awk '($6=="+") {print $1"\t"$2"\t"$3}' human_+-1000_proms.bed | uniq > human1000positive
 
 Python codes / preparation / correlation validation
 
