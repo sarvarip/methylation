@@ -5,12 +5,11 @@ EPIC analysis
 - Get promoters 1000 upstream and downstream of a gene 
 - Use the Table browser for that: https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=728013001_Upd5TraWK5jaeJEmxkb0K01CKWaB
 - concat them
-- sort them: sort -V -k 1,3 "human_+-1000_proms.bed" -o human_+-1000_proms.bed.sorted
-- merge them (no overlaps): bedtools merge -i humanproms.bed > humanproms.merged.bed
-
-- awk '$3 = $3+1000' human_1000_upstream_proms.bed | head -10
-- awk '($6=="+") {print $1"\t"$2"\t"$3}' human_+-1000_proms.bed | uniq > human1000positive
-- sort -V -k 1,3 "human1000positive" -o human1000positive.sorted
+- awk '$3 = $3+1000' proms.bed 
+- awk '($6=="+") {print $1"\t"$2"\t"$3}' proms.bed | uniq > promstabs.bed
+- sortBed -i promstabs.bed > prom.bed
+- bedtools merge -i prom.bed > merged.bed
+- sort -V -k 1,3 "merged.bed" -o proms_merged_sorted
 
 Machine Learning prep
 
