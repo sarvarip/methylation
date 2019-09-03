@@ -1,5 +1,9 @@
 Project
 
+Aging analysis
+
+- data originally transferred to: sarvari@smithlab:/labdata/jenkins
+
 EPIC analysis
 
 - Get promoters 1000 upstream and downstream of a gene 
