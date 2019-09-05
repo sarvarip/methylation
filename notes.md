@@ -291,13 +291,12 @@ Pipeline
 - Methpipe installation
     - git clone --recursive https://github.com/smithlabcode/methpipe.git
     - git clone --recursive https://github.com/smithlabcode/smithlab_cpp.git
-    - use g++ version 5+ (see abpve hopw to get it)
+    - use g++ version 5+ (see above how to get it)
+    - rename htslib_wrapper.*pp such that it does not have any extension
+    - make -f original_makefile.mk static in smithlab_cpp directory
     - create new environmental variable, SMITHLAB_CPP (see above)
-    - make -f original_makefile.mk DOES NOT WORK
-    - autoreconf -i 
-    - ./configure
-    - export for SMITHLAB_CPP does not work anymore!!
-
+    - make -f original_makefile.mk in mehpipe directory 
+    
 - Snakemake file for the whole pipeline
     - /home/rcf-47/andrewds/as/code/MethBase/MethBaseConfig
 
