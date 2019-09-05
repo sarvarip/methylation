@@ -1,5 +1,10 @@
 Project
 
+General EWAS analysis
+
+- library(data.table)
+- df <- fread(text = 'GSE55763_normalized_betas_clean.txt')
+
 Aging analysis
 
 - data originally transferred to: sarvari@smithlab:/labdata/jenkins
