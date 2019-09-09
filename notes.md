@@ -3,6 +3,7 @@ Project
 General EWAS analysis
 
 - library(data.table)
+- location: /staging/as/andrewds/ewas/GSE55763_normalized_betas_clean.txt
 - df <- fread(text = 'GSE55763_normalized_betas_clean.txt')
 
 Aging analysis
