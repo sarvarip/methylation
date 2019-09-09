@@ -20,6 +20,7 @@ EPIC analysis
 - sortBed -i promstabs.bed > prom.bed
 - bedtools merge -i prom.bed > merged.bed
 - sort -V -k 1,3 "merged.bed" -o proms_merged_sorted
+- CpG islands: https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=578954849_wF1QP81SIHdfr8b0kmZUOcsZcHYr&clade=mammal&org=Human&db=hg38&hgta_group=regulation&hgta_track=knownGene&hgta_table=0&hgta_regionType=genome&position=chr9%3A133252000-133280861&hgta_outputType=primaryTable&hgta_outFileName=
 
 Machine Learning prep
 
