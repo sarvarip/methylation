@@ -254,7 +254,7 @@ General
 
 - Changing the environmental path (MUST DO IT EVERY TIME)
     - echo $PATH (let’s you see the current environmental variables)
-    - export PATH=$PATH:~/methpipe/bin (add ~/methpipe/bin to the path)
+    - export PATH=$PATH:~/panfs/smithlab/methpipe/src/analysis/
     - export PATH=$PATH:~/sarvari/sratoolkit.2.9.2-ubuntu64/bin
     - export PATH=$PATH:~/miniconda3/bin
     - export PATH=$PATH:/usr/usc/matlab/R2018a/bin
