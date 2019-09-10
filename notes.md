@@ -9,7 +9,7 @@ General EWAS analysis
 Aging analysis
 
 - data originally transferred to: sarvari@smithlab:/labdata/jenkins
-- @smithlab.usc.edu
+- sarvari@smithlab.usc.edu
 
 EPIC analysis
 
