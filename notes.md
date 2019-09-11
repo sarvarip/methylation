@@ -27,6 +27,7 @@ EPIC analysis
 - multimethstat -progress -v -o cpg_island_features_only.txt cpgIslandExt_hg19_080913_named.bed EPIC_hg19_probe_coords.bed methylation.txt
 - Sorting according to multimethstats definition: LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -o proms_merged_sorted_otherdef.bed proms_merged_sorted or simply sortBed -i promstabs.bed > prom.bed
 - awk 'BEGIN{k=0} {$4 = $1"_"$2"_"$3; print $0"\t0\t+"}' merged.bed > merged_sixcol.bed
+- awk '{print $4}' merged_sixcol.bed > colnames
 - df <- read.table("proms_features_only.txt", header = TRUE, sep = "\t", row.names = 1)
 
 Machine Learning prep
