@@ -31,6 +31,7 @@ EPIC analysis
 - awk '{print $4}' merged_sixcol_sorted > colnames
 - awk '{$1=$1+1; print $1}' gene_array > colidx %add one because in Python indexing starts from 0, but in R from 1
 - df <- read.table("proms_features_only.txt", header = TRUE, sep = "\t", row.names = 1)
+- export PATH=$PATH:~/panfs/methpipe_edit/methpipe/src/analysis
 
 Machine Learning prep
 
