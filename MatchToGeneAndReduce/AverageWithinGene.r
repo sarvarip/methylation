@@ -2,12 +2,21 @@ df <- readRDS('methylation.rds')
 rownames(df) <- gsub("X", "", rownames(df))
 numrows = length(rownames(df))
 
+fi <- file("colnames",open="r")
+featnames <- readLines(fi)
+
+fil <- file("colidx", open="r")
+featidx <- readLines(fil)
+featidx <- as.integer(featidx)
+
 f <- file("coord_lists_per_gene",open="r")
 lines <- readLines(f)
 num <- length(lines)
 
 reduced <- data.frame(matrix(ncol=num, nrow=numrows))
 rownames(reduced) <- rownames(df)
+chosen.feat <- featnames[featidx]
+colnames(reduced) <- chosen.feat
 for (i in 1:num) {
     print(i)
     feat <- unlist(strsplit(lines[i], split='\t'))

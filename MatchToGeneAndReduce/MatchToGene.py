@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-ref = pd.read_csv('updown1000.sorted', header=None, sep='\t')
+ref = pd.read_csv('proms_merged_sorted', header=None, sep='\t')
 result = []
 gene_array = []
 
@@ -14,7 +14,11 @@ def isbigger(str1, str2):
         return False
     if str1 == 'chrX': # we know that str2 is not chrY
         return True
-    if str2 == 'chrX':
+    if str2 == 'chrX': # we know that str1 is not chrY
+        return False
+    if str1 == 'chrM': # we know that str2 is neither chrY or chrX
+        return True
+    if str2 == 'chrM': # we know that str1 is neither chrY or chrX
         return False
     if len(str2) > len(str1):
         return False
@@ -48,13 +52,15 @@ with open('sorted_EPIC_probe_coords') as f:
             if found == 1:
                 result[-1].append(coord)
                 gene_array[-1].append(start_compare)
-                print('New gene found for probe')
+                print('Probe belongs to same gene as probe before')
+                print(start_compare)
                 found = 1
                 continue
             else:
                 result.append([coord])
                 gene_array.append([start_compare])
-                print('Probe belongs to same gene as probe before')
+                print('New gene found for probe')
+                print(start_compare)
                 found = 1
                 continue
         while site > ref_val_upper and chrom == ref_chrom:
@@ -72,6 +78,7 @@ with open('sorted_EPIC_probe_coords') as f:
             result.append([coord])
             gene_array.append([start_compare])
             print('New gene found for probe')
+            print(start_compare)
             found = 1
             continue
         else:
@@ -113,7 +120,7 @@ with open('coord_lists_per_gene', 'w+') as o:
 
 with open('gene_array', 'w+') as o:
     for genes in gene_array:
-        o.write('\t'.join(genes) + '\n')
+        o.write('\t'.join([str(x) for x in genes]) + '\n')
 
 
 
