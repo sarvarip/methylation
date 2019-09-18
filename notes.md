@@ -30,8 +30,12 @@ EPIC analysis
 - multimethstat -progress -v -o  proms_features_only.txt merged_sixcol.bed EPIC_hg19_probe_coords.bed methylation.txt
 - awk '{print $4}' merged_sixcol_sorted > colnames
 - awk '{$1=$1+1; print $1}' gene_array > colidx %add one because in Python indexing starts from 0, but in R from 1
-- df <- read.table("proms_features_only.txt", header = TRUE, sep = "\t", row.names = 1)
+- df <- read.table("proms_features_only_fixed.txt", header = TRUE, sep = "\t", row.names = 1)
 - export PATH=$PATH:~/panfs/methpipe_edit/methpipe/src/analysis
+
+Debug multimethstat
+
+- Find line of occurence of second chromosome: grep -n chr2 sorted_EPIC_probe_coords | head -1
 
 Machine Learning prep
 
