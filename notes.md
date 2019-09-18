@@ -27,7 +27,7 @@ EPIC analysis
 - multimethstat -progress -v -o cpg_island_features_only.txt cpgIslandExt_hg19_080913_named.bed EPIC_hg19_probe_coords.bed methylation.txt
 - Sorting according to multimethstats definition: LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -o proms_merged_sorted_otherdef.bed proms_merged_sorted or simply sortBed -i promstabs.bed > prom.bed
 - awk 'BEGIN{k=0} {$4 = $1"_"$2"_"$3; print $0"\t0\t+"}' merged.bed > merged_sixcol.bed
-- multimethstat -progress -v -o  proms_features_only.txt merged_sixcol.bed EPIC_hg19_probe_coords.bed methylation.txt
+- ~/panfs/methpipe_edit/methpipe/src/analysis/multimethstat -progress -v -o proms_features_only_fixed.txt merged_sixcol.bed EPIC_hg19_probe_coords.bed methylation_fixed.txt
 - awk '{print $4}' merged_sixcol_sorted > colnames
 - awk '{$1=$1+1; print $1}' gene_array > colidx %add one because in Python indexing starts from 0, but in R from 1
 - df <- read.table("proms_features_only_fixed.txt", header = TRUE, sep = "\t", row.names = 1)
