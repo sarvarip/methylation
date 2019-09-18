@@ -35,7 +35,8 @@ EPIC analysis
 
 Debug multimethstat
 
-- Find line of occurence of second chromosome: grep -n chr2 sorted_EPIC_probe_coords | head -1
+- Find line of occurence of second chromosome: grep -n chr2 colnames | head -1
+- grep -n 1982 
 
 Machine Learning prep
 
