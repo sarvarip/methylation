@@ -20,6 +20,7 @@ Aston smoking
 - R CMD INSTALL --configure-args="--disable-threading"  .
 - choose 1 core in HPC if preprocessQuantile is run
 - grSet <- preprocessQuantile(rgSet)
+- grSet.beta <- getBeta(grSet)
 
 Aging analysis
 
