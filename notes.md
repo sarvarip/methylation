@@ -6,6 +6,10 @@ General EWAS analysis
 - location: /staging/as/andrewds/ewas/GSE55763_normalized_betas_clean.txt
 - df <- fread(text = 'GSE55763_normalized_betas_clean.txt')
 
+Aston smoking
+
+- conda create -n methylation_r r bioconductor-minfi
+
 Aging analysis
 
 - data originally transferred to: sarvari@smithlab:/labdata/jenkins
