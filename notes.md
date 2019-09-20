@@ -9,6 +9,17 @@ General EWAS analysis
 Aston smoking
 
 - conda create -n methylation_r r bioconductor-minfi
+- source activate methylation_r
+- conda install r bioconductor-illuminahumanmethylation450kmanifest 
+- rgSet <- read.metharray.exp(c("3999510025", "3999510052", "3999510060", "3999510061", "3999510062", "3999543029", "3999543040", "3999543062", "3999543086", "3999543090", "3999543099", "3999543126", "3999543130"))
+- MSet.swan <- preprocessSWAN(rgSet)
+- Mset.swan.betas <- getBeta(MSet.swan)
+
+- git clone https://github.com/bmbolstad/preprocessCore.git
+- cd preprocessCore/
+- R CMD INSTALL --configure-args="--disable-threading"  .
+- choose 1 core in HPC if preprocessQuantile is run
+- grSet <- preprocessQuantile(rgSet)
 
 Aging analysis
 
