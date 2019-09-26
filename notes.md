@@ -43,6 +43,7 @@ EPIC analysis
 - awk 'BEGIN{k=0} {$4 = $4""k; k+=1; print}' cpgIslandExt_hg19_080913_good.bed > cpgIslandExt_hg19_080913_named.bed
 - multimethstat -progress -v -o cpg_island_features_only.txt cpgIslandExt_hg19_080913_named.bed EPIC_hg19_probe_coords.bed methylation.txt
 - Sorting according to multimethstats definition: LC_ALL=C sort -k 1,1 -k 3,3n -k 2,2n -k 6,6 -o proms_merged_sorted_otherdef.bed proms_merged_sorted or simply sortBed -i promstabs.bed > prom.bed
+- sort -V is to be used if bedtools merging is used after!! (otherwise bedtools error)
 - awk 'BEGIN{k=0} {$4 = $1"_"$2"_"$3; print $0"\t0\t+"}' merged.bed > merged_sixcol.bed
 - ~/panfs/methpipe_edit/methpipe/src/analysis/multimethstat -progress -v -o proms_features_only_fixed.txt merged_sixcol.bed EPIC_hg19_probe_coords.bed methylation_fixed.txt
 - awk '{print $4}' merged_sixcol_sorted > colnames
