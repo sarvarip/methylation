@@ -16,9 +16,6 @@ Aston smoking
 - MSet.swan <- preprocessSWAN(rgSet)
 - Mset.swan.betas <- getBeta(MSet.swan)
 
-- git clone https://github.com/bmbolstad/preprocessCore.git
-- cd preprocessCore/
-- R CMD INSTALL --configure-args="--disable-threading"  .
 - choose 1 core in HPC if preprocessQuantile is run
 - grSet <- preprocessQuantile(rgSet)
 - grSet.beta <- getBeta(grSet)
@@ -59,6 +56,7 @@ Debug multimethstat
 - head -n 6044 coord_lists_per_gene | tail -1
 - awk '($4 == "chr6_72959032_72961032" || $4 == "chr9_115013537_115015537" || $4 == "chr15_30937316_30939316" || $4 == "chr15_90783140_90785140" || $4 == "chrY_9527708_9529708") {print $0}' merged_sixcol.bed > test.bed
 - for i in `head -1 ../../multimethstat/methylation.txt `; do echo $i; done | grep cg114996
+- head -3 methylation_fixed.txt | cut -d " " -f 1-5
 
 Machine Learning prep
 
