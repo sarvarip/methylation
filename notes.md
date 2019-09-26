@@ -48,6 +48,7 @@ EPIC analysis
 - awk '{print $4}' merged_sixcol_sorted > colnames
 - awk '{$1=$1+1; print $1}' gene_array > colidx %add one because in Python indexing starts from 0, but in R from 1
 - df <- read.table("proms_features_only_fixed.txt", header = TRUE, sep = "\t", row.names = 1)
+- To avoid shifting of columns, use instead: X <- read.table('file.txt', header=T)
 - export PATH=$PATH:~/panfs/methpipe_edit/methpipe/src/analysis
 
 Debug multimethstat
