@@ -172,6 +172,7 @@ END { print FILENAME,  4*totlen/NR } ' "$i"; done >> fraglen
 
 General
 
+- find /home/cmb-panasas2/sarvari -type d -exec chmod 775 \{} \; to change permissions for all files in panfs such that they can be edited by group members
 - R install.packages
     - move R directory at login node (where packages are automatically installed) to panasas and create a symbolic link from panasas to the login directory
 
