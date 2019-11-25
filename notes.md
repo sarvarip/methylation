@@ -1,5 +1,17 @@
 Project
 
+Motility
+
+- sed -i 's~,~\t~g' RMAdataMotility.csv
+- grep "\S" RMAdataMotility.csv > Motility.tsv
+- awk 'BEGIN{FS=OFS="\t"} {sub(/-.+/, "", $1)} 1' Motility.tsv > motility
+- sed -i 's~"~~g' motility
+- awk 'BEGIN{FS=OFS="\t"} {sub(/ .+/, "", $1)} 1' motility > motility.tsv
+- vim edit to remove one weird line
+- awk -F"\t" '{if (!($2=="" || $3=="" || $4=="")) print $0}' motility.tsv > motility.cleared
+- awk -F"\t" '{if (NR>1) print $1"\t"100*$4/($2*$3); else print "ID\tMotility"}' motility.cleared > motility.tsv
+
+
 General EWAS analysis
 
 - library(data.table)
