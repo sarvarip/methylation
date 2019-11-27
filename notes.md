@@ -34,6 +34,8 @@ Aston smoking
 
 - write.table(df, 'AgingNormalizedTogether.txt', sep='\t', quote=FALSE)
 
+- multimethstat -v ./intervals/Human_Sperm_named.bed EPIC_hg19_probe_coords.bed ./input/AgingNormalizedTogether.txt -o AgingNorm_Human_Sperm_hmr.txt
+
 Aging analysis
 
 - data originally transferred to: sarvari@smithlab:/labdata/jenkins
