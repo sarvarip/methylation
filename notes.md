@@ -32,6 +32,8 @@ Aston smoking
 - grSet <- preprocessQuantile(rgSet)
 - grSet.beta <- getBeta(grSet)
 
+- write.table(df, 'AgingNormalizedTogether.txt', sep='\t', quote=FALSE)
+
 Aging analysis
 
 - data originally transferred to: sarvari@smithlab:/labdata/jenkins
