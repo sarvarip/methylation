@@ -353,6 +353,14 @@ Pipeline
     - create new environmental variable, SMITHLAB_CPP (see above)
     - make -f original_makefile.mk in mehpipe directory 
     
+    - (1) Mac users will have to accept the Xcode license before using any of the command line tools related to development.
+    - (2) GSL must be installed
+    - (3) Brew must be installed (needed for GSL)
+    - (4) The default location (and the right one) for brew is in /usr/local, but the user does not have write access    (solution: recursively change ownership of /usr/local/* to the user)
+    - (5) The default location to install brew is /usr/local/homebrew, which required that we create symbolic links (using ln). This should be changed to just /usr/local instead.
+    - (6) We need to make sure that by default the htslib_wrapper files are excluded so users don’t need to worry about those.
+    - Also, it would be really great to find out why g++ 4.2.1 worked for Tim, but not others in the Smith lab.
+    
 - Snakemake file for the whole pipeline
     - /home/rcf-47/andrewds/as/code/MethBase/MethBaseConfig
 
