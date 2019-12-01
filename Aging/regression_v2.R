@@ -63,6 +63,7 @@ cross.val.fold <- 10
 n.individuals <- nrow(data)
 print("Number of samples")
 print(n.individuals)
+set.seed(1)
 parts <- sample(rep(1:cross.val.fold, length.out=n.individuals))
 
 rsq_list <- rep(0,cross.val.fold)
@@ -73,24 +74,17 @@ if (alpha.lasso > 0) {
 used.feat <- list()
 }
 
-#print("Check0")
-
 for (i in 1:cross.val.fold) {
-
-#print("Check01")
 
 training.individuals <- rownames(data)[which(parts != i)]
 testing.individuals <- rownames(data)[which(parts == i)]
-#print("Check02")
 X_ <- data[training.individuals,]
 Y <- as.matrix(X_$Age)
 X_$Age <- NULL
 X <- as.matrix(X_)
-#print("check03")
 
 cv0 = cv.glmnet(X,Y,type.measure="mse",alpha=alpha.lasso,
                 standardize=T)
-#print("Check1")
 if (alpha.lasso > 0) {
 cs.k <- coef(cv0, s='lambda.min')
 #print("Check2")
@@ -151,6 +145,7 @@ id.data <- id.data[, colnames(id.data) %in% selected.features]
 n.individuals <- nrow(id.data)
 print("Number of samples")
 print(n.individuals)
+set.seed(1)
 parts <- sample(rep(1:cross.val.fold, length.out=n.individuals))
 
 rsq_list <- rep(0,cross.val.fold)
@@ -186,8 +181,10 @@ varexp_train[i] <- get.rsq(Y, y.train.pred)
 
 }
 
-print(paste("Found features:", ncol(id.data)))
-print(paste("Total features:", length(selected.features)))
+print(paste("Found features:", ncol(id.data)-1))
+print(paste("Total features:", length(selected.features)-2))
+#-1 because of Age and -2 because of Intercept that is a selected
+#feature
 
 print(paste("Mean R squared: ", mean(rsq_list)))
 print(paste("Std dev of R squared: ", sd(rsq_list)))

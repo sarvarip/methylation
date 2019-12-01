@@ -15,16 +15,15 @@
 # ../input/agedat.tsv 1
 
 args = commandArgs(trailingOnly=TRUE)
-if (length(args) < 5) {
+if (length(args) < 4) {
 stop('regression.R <methylation-data> <independent-data> 
-     <age-data> <independent-age-data> <alpha>',
+     <age-data> <independent-age-data>' ,
      call.=FALSE)
 }
 methylation.filename <- args[1]
 newdata.filename <- args[2]
 metadata.filename <- args[3]
 newmetadata.filename <- args[4]
-alpha.lasso <- args[5]
 
 read.meta <- function(metadata.filename){
 if (length(grep(".rds", metadata.filename))>0){
@@ -41,7 +40,7 @@ df.m$Male.Age <- NULL
 return (df.m)
 }
 
-library(glmnet)
+library(pls)
 df <- read.table(methylation.filename, header=T)
 id.df <- read.table(newdata.filename, header=T)
 rownames(df) <- gsub("X", "", rownames(df))
@@ -78,26 +77,10 @@ cross.val.fold <- 10
 n.individuals <- nrow(data)
 print("Number of samples")
 print(n.individuals)
+
 set.seed(1)
-foldid <- sample(rep(1:cross.val.fold, length.out=n.individuals))
-
-if (alpha.lasso > 0) {
-used.feat <- list()
-}
-
-X_ <- data
-Y <- as.matrix(X_$Age)
-
-X_$Age <- NULL
-X <- as.matrix(X_)
-
-cv0 = cv.glmnet(X,Y,type.measure="mse",alpha=alpha.lasso,
-                nfolds=cross.val.fold, foldid = foldid)
-if (alpha.lasso > 0) {
-cs.k <- coef(cv0, s='lambda.min')
-used.feat <- cs.k@Dimnames[[1]][cs.k@i + 1]
-print(used.feat)
-}
+pls.fit <- plsr(Age~., data=data, ncomp=25, scale=T, validation='CV')
+ncomp <- which.min(RMSEP(pls.fit)$val[1,1,])-1
 
 X.test <- id.data
 y_real <- as.matrix(id.data$Age)
@@ -105,20 +88,24 @@ y_real <- as.matrix(id.data$Age)
 X.test$Age <- NULL
 x_pred <- as.matrix(X.test)
 
-print("Predicting on second dataset using coefficients and best lambda")
+print("Predicting on second dataset using coefficients 
+      and optimal number of components")
 
-y_pred <- predict(cv0, newx = x_pred, s="lambda.min")
-y.train.pred <- predict(cv0, newx=X, s="lambda.min")
+y_pred <- predict(pls.fit, x_pred, ncomp=ncomp)
+
+dim(y_pred) <- c(nrow(y_pred), 1)
+
+y.train.pred <- predict(pls.fit, data, ncomp=ncomp)
 
 result.lm = lm(y_real ~ y_pred)
 print(cbind(y_real, y_pred))
 
-figure.filename <- sprintf('%s_nocenter.pdf', newdata.filename)
+figure.filename <- sprintf('%s_pls_nocenter.pdf', newdata.filename)
 
 rsq_list <- summary(result.lm)$r.squared
 mse_list <- mean((y_real - y_pred)^2)
 varexp_list <- get.rsq(y_real, y_pred)
-varexp_train <- get.rsq(Y, y.train.pred)
+varexp_train <- get.rsq(data$Age, y.train.pred)
 
 pdf(figure.filename, width=6.5, height=8, paper='US')
 template <- "Test data: \n %s \n R2=%.3f"
@@ -128,79 +115,12 @@ abline(result.lm)
 abline(a=0, b=1, col="red", lty=2)
 dev.off()
 
-print(paste("Number of features selected by Lasso: ",
-            length(used.feat)-1)) #-1 because of intercept
-
-
 print(paste("Mean R squared: ", mean(rsq_list)))
 print(paste("Mean MSE: ", mean(mse_list)))
 print(paste("Mean of variance explained: ", mean(varexp_list)))
 print(paste("Training set: Mean of variance explained: ", 
             mean(varexp_train)))
-print(paste("Number of features: ", ncol(data)-1))
+print(paste("Number of features: ", unname(ncomp)))
 
-print("Training on second dataset using selected features")
 
-selected.features <- used.feat
-featlen <- length(selected.features)
-selected.features[featlen+1] <- "Age"
-id.data <- id.data[, colnames(id.data) %in% selected.features]
-
-n.individuals <- nrow(id.data)
-print("Number of samples")
-print(n.individuals)
-set.seed(1)
-parts <- sample(rep(1:cross.val.fold, length.out=n.individuals))
-
-rsq_list <- rep(0,cross.val.fold)
-varexp_train <- rep(0,cross.val.fold)
-varexp_list <- rep(0,cross.val.fold)
-mse_list <- rep(0,cross.val.fold)
-
-for (i in 1:cross.val.fold) {
-
-training.individuals <- rownames(id.data)[which(parts != i)]
-testing.individuals <- rownames(id.data)[which(parts == i)]
-X_ <- id.data[training.individuals,]
-Y <- as.matrix(X_$Age)
-X_$Age <- NULL
-X <- as.matrix(X_)
-
-n.training <- nrow(X)
-set.seed(1)
-foldid <- sample(rep(1:cross.val.fold, length.out=n.training))
-
-cv0 = cv.glmnet(X,Y,type.measure="mse",alpha=alpha.lasso,
-                nfolds = cross.val.fold, foldid = foldid)
-
-X.test <- id.data[testing.individuals,]
-y_real <- as.matrix(X.test$Age)
-X.test$Age <- NULL
-x_pred <- as.matrix(X.test)
-
-y_pred <- predict(cv0, newx = x_pred, s="lambda.min")
-y.train.pred <- predict(cv0, newx=X, s="lambda.min")
-result.lm = lm(y_real ~ y_pred)
-#print(cbind(y_real, y_pred))
-rsq_list[i] <- summary(result.lm)$r.squared
-mse_list[i] <- mean((y_real - y_pred)^2)
-varexp_list[i] <- get.rsq(y_real, y_pred)
-varexp_train[i] <- get.rsq(Y, y.train.pred)
-
-}
-
-print(paste("Found features:", ncol(id.data)))
-print(paste("Total features:", length(selected.features)-1))
-#-1 because intercept term does not count
-
-print(paste("Mean R squared: ", mean(rsq_list)))
-print(paste("Std dev of R squared: ", sd(rsq_list)))
-print(paste("Mean MSE: ", mean(mse_list)))
-print(paste("Std dev of MSE: ", sd(mse_list)))
-print(paste("Mean of variance explained: ", mean(varexp_list)))
-print(paste("Std dev of variance explained: ", sd(varexp_list)))
-print(paste("Training set: Mean of variance explained: ", 
-            mean(varexp_train)))
-print(paste("Training set: Std dev of variance explained: ", 
-            sd(varexp_train)))
 
