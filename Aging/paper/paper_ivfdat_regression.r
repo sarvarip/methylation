@@ -71,7 +71,7 @@ varexp_train[i] <- get.rsq(Y, y.train.pred)
 
 pdf("IVFdata_50features.pdf", width=6.5, height=8, paper='US')
 template <- "%s \n (R2=%.3f)"
-plot(y_pred, y_real, xlab="Actual age", ylab="Predicted age",
+plot(y_real, y_pred, xlab="Actual age", ylab="Predicted age",
      main=sprintf(template, "Ridge regression on IVF data", varexp_list[10]))
 abline(result.lm)
 abline(a=0, b=1, col="red", lty=2)
