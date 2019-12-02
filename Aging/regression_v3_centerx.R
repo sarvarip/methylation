@@ -120,7 +120,7 @@ print(cbind(y_real, y_pred))
 figure.filename <- sprintf('%s_xcenter.pdf', newdata.filename)
 
 rsq_list <- summary(result.lm)$r.squared
-mse_list <- mean((y_real - y_pred)^2)
+mse_list <- mean((y_pred - y_real)^2)
 varexp_list <- get.rsq(y_real, y_pred)
 varexp_train <- get.rsq(Y, y.train.pred)
 

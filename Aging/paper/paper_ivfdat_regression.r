@@ -60,7 +60,7 @@ x_pred <- as.matrix(X.test)
 
 y_pred <- predict(cv0, newx = x_pred, s="lambda.min")
 y.train.pred <- predict(cv0, newx=X, s="lambda.min")
-result.lm = lm(y_real ~ y_pred)
+result.lm = lm(y_pred ~ y_real)
 print(cbind(y_real, y_pred))
 rsq_list[i] <- summary(result.lm)$r.squared
 mse_list[i] <- mean((y_real - y_pred)^2)

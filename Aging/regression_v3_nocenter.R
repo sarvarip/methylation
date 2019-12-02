@@ -110,7 +110,7 @@ print("Predicting on second dataset using coefficients and best lambda")
 y_pred <- predict(cv0, newx = x_pred, s="lambda.min")
 y.train.pred <- predict(cv0, newx=X, s="lambda.min")
 
-result.lm = lm(y_real ~ y_pred)
+result.lm = lm(y_pred ~ y_real)
 print(cbind(y_real, y_pred))
 
 figure.filename <- sprintf('%s_nocenter.pdf', newdata.filename)

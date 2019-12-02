@@ -97,7 +97,7 @@ dim(y_pred) <- c(nrow(y_pred), 1)
 
 y.train.pred <- predict(pls.fit, data, ncomp=ncomp)
 
-result.lm = lm(y_real ~ y_pred)
+result.lm = lm(y_pred ~ y_real)
 print(cbind(y_real, y_pred))
 
 figure.filename <- sprintf('%s_pls_nocenter.pdf', newdata.filename)
