@@ -267,7 +267,7 @@ General
 
 - Request interactive computing job
     - Always use salloc for any job, no job should be done on the head node
-    - salloc --partition=cmbr --mem=120GB --time=50:00:00 --ntasks=1 --cpus-per-task=16
+    - salloc --partition=cmb --mem=120GB --time=50:00:00 --ntasks=1 --cpus-per-task=16 --account=lc_as
 
 - Open big file
     - head mouse.mr > mouse.mr.head
