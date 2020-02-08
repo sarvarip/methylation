@@ -132,9 +132,10 @@ abline(result.lm)
 abline(a=0, b=1, col="red", lty=2)
 dev.off()
 
-
+if (alpha.lasso>0) {
 print(paste("Number of features selected by Lasso: ",
             length(used.feat)-1)) #-1 because of intercept
+}
 
 
 print(paste("Mean R squared: ", mean(rsq_list)))
@@ -146,10 +147,12 @@ print(paste("Number of features: ", ncol(data)-1))
 
 print("Training on second dataset using selected features")
 
+if (alpha.lasso>0) {
 selected.features <- used.feat
 featlen <- length(selected.features)
 selected.features[featlen+1] <- "Age"
 id.data <- id.data[, colnames(id.data) %in% selected.features]
+}
 
 n.individuals <- nrow(id.data)
 print("Number of samples")
@@ -195,8 +198,11 @@ varexp_train[i] <- get.rsq(Y, y.train.pred)
 }
 
 print(paste("Found features:", ncol(id.data)))
+
+if (alpha.lasso > 0) {
 print(paste("Total features:", length(selected.features)-1))
 #-1 because intercept term does not count
+}
 
 print(paste("Mean R squared: ", mean(rsq_list)))
 print(paste("Std dev of R squared: ", sd(rsq_list)))
